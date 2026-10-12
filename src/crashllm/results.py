@@ -29,7 +29,11 @@ import time
 from datetime import datetime
 from pathlib import Path
 
+import hashlib
+
 import pandas as pd
+
+from .prompts import PROMPT_VERSION, SYSTEM_PROMPT
 
 EVAL_TABLES = (
     "case_results",
@@ -80,6 +84,8 @@ class RunRecorder:
             config_file=cfg.get("_config_path"),
             started_at=self.params.get("started_at", datetime.now().isoformat(timespec="seconds")),
             python=platform.python_version(),
+            prompt_version=PROMPT_VERSION,
+            system_prompt_sha1=hashlib.sha1(SYSTEM_PROMPT.encode()).hexdigest()[:12],
         )
         self._add_split_info()
 

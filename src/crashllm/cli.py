@@ -7,6 +7,7 @@ import argparse
 from .config import load_config, set_seed
 from .data import load_split
 from .labels import build_label_vocab, save_label_vocab
+from .prompts import check_prompt_labels
 
 
 def base_parser(description: str) -> argparse.ArgumentParser:
@@ -23,6 +24,7 @@ def setup(args):
     vocab = build_label_vocab(train_df, cfg["data"]["target_cols"])
     save_label_vocab(vocab, cfg["paths"]["split_dir"] / "label_vocab.json")
     print(f"Train: {len(train_df)}   Test: {len(test_df)}")
+    check_prompt_labels(vocab)
     return cfg, train_df, test_df, vocab
 
 
