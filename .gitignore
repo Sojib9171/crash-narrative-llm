@@ -1,0 +1,12 @@
+.env
+.venv/
+__pycache__/
+*.egg-info/
+.ipynb_checkpoints/
+
+# data and large artifacts
+data/raw/*
+!data/raw/.gitkeep
+trained_models/
+results/
+Results_before_updating_prompt_on_10_12/

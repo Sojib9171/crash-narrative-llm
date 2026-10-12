@@ -1,0 +1,42 @@
+{
+  "unit_1_direction": [
+    "eb",
+    "nb",
+    "sb",
+    "unknown",
+    "wb"
+  ],
+  "unit_1_movement": [
+    "lt",
+    "rt",
+    "th",
+    "unknown"
+  ],
+  "unit_2_direction": [
+    "eb",
+    "nb",
+    "sb",
+    "unknown",
+    "wb"
+  ],
+  "unit_2_movement": [
+    "lt",
+    "rt",
+    "th",
+    "unknown"
+  ],
+  "unit_at_fault": [
+    "unit 1",
+    "unit 2",
+    "unknown"
+  ],
+  "crash_type": [
+    "backing vehicle",
+    "head on",
+    "left turn",
+    "rear end",
+    "right angle",
+    "side swipe",
+    "unknown"
+  ]
+}

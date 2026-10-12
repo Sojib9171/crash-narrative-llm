@@ -1,0 +1,22 @@
+# Install PyTorch FIRST, matching your CUDA version — see README / https://pytorch.org
+#   pip install torch --index-url https://download.pytorch.org/whl/cu124
+
+pandas>=2.0
+numpy
+scipy
+scikit-learn
+matplotlib
+openpyxl
+pyyaml
+python-dotenv
+tqdm
+
+transformers>=4.45.0
+accelerate
+peft
+bitsandbytes>=0.43        # 4-bit QLoRA (NVIDIA GPU, Linux or Windows)
+sentencepiece
+huggingface_hub
+openai>=1.40
+
+ipykernel                 # run notebooks inside VS Code

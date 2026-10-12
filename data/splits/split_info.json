@@ -1,0 +1,9 @@
+{
+  "seed": 42,
+  "source_file": "C:\\Users\\msojib\\FL_Experiments\\crash-narrative-llm\\data\\raw\\crashdata_clean_20260929.xlsx",
+  "total_cases": 505,
+  "train_cases": 353,
+  "test_cases": 152,
+  "train_percentage": 69.9009900990099,
+  "test_percentage": 30.099009900990097
+}

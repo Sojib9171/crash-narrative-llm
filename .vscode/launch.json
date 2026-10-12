@@ -1,0 +1,80 @@
+{
+  // Run / debug any step from the "Run and Debug" panel (Ctrl+Shift+D).
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "0. Prepare data (fixed split)",
+      "type": "debugpy", "request": "launch",
+      "program": "${workspaceFolder}/scripts/prepare_data.py",
+      "cwd": "${workspaceFolder}", "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal", "justMyCode": true
+    },
+    {
+      "name": "1. BERT multi-task",
+      "type": "debugpy", "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_bert.py",
+      "cwd": "${workspaceFolder}", "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal", "justMyCode": true
+    },
+    {
+      "name": "2a. GPT-4o (10-row check)",
+      "type": "debugpy", "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_gpt.py",
+      "args": ["--max-rows", "10"],
+      "cwd": "${workspaceFolder}", "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal", "justMyCode": true
+    },
+    {
+      "name": "2b. GPT-4o (full test set)",
+      "type": "debugpy", "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_gpt.py",
+      "cwd": "${workspaceFolder}", "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal", "justMyCode": true
+    },
+    {
+      "name": "3. Llama 3.1 8B QLoRA",
+      "type": "debugpy", "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_qlora.py",
+      "args": ["--model", "llama"],
+      "cwd": "${workspaceFolder}", "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal", "justMyCode": true
+    },
+    {
+      "name": "4. Qwen3 8B QLoRA",
+      "type": "debugpy", "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_qlora.py",
+      "args": ["--model", "qwen"],
+      "cwd": "${workspaceFolder}", "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal", "justMyCode": true
+    },
+    {
+      "name": "5. DeepSeek-R1-Distill 7B QLoRA",
+      "type": "debugpy", "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_qlora.py",
+      "args": ["--model", "deepseek"],
+      "cwd": "${workspaceFolder}", "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal", "justMyCode": true
+    },
+    {
+      "name": "6. Compare models (tables)",
+      "type": "debugpy", "request": "launch",
+      "program": "${workspaceFolder}/scripts/compare_models.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal", "justMyCode": true
+    },
+    {
+      "name": "7. Plot results (figures)",
+      "type": "debugpy", "request": "launch",
+      "program": "${workspaceFolder}/scripts/plot_results.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal", "justMyCode": true
+    },
+    {
+      "name": "Current file",
+      "type": "debugpy", "request": "launch",
+      "program": "${file}",
+      "cwd": "${workspaceFolder}", "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal", "justMyCode": true
+    }
+  ]
+}

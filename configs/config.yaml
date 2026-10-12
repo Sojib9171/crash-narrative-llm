@@ -1,0 +1,91 @@
+# ============================================================
+# Crash-narrative reconstruction — experiment configuration
+# Relative paths are resolved from the project root.
+# ============================================================
+
+seed: 42
+
+paths:
+  data_path: data/raw/crashdata_clean_20260929.xlsx
+  split_dir: data/splits
+  results_dir: results
+  models_dir: trained_models
+
+data:
+  case_col: case_id
+  text_col: description
+  target_cols:
+    - unit_1_direction
+    - unit_1_movement
+    - unit_2_direction
+    - unit_2_movement
+    - unit_at_fault
+    - crash_type
+  test_size: 0.30
+  stratify_col: crash_type
+  max_split_attempts: 3000
+
+prompt:
+  max_narrative_chars: 5000      # beginning 70% + ending 30% kept when longer
+
+# ------------------------------------------------------------
+# Model 1 — BERT multi-task classifier
+# ------------------------------------------------------------
+bert:
+  run_name: BERT_multitask
+  model_name: bert-base-uncased
+  max_length: 384
+  epochs: 4
+  batch_size: 8
+  eval_batch_size: 16
+  learning_rate: 2.0e-5
+  weight_decay: 0.01
+  dropout: 0.20
+  class_weighted_loss: true
+
+# ------------------------------------------------------------
+# Model 2 — GPT-4o few-shot (OpenAI API)
+# ------------------------------------------------------------
+gpt:
+  run_name: GPT4o_8shot
+  model: gpt-4o-2024-11-20
+  n_few_shot: 8
+  few_shot_max_chars: 2500
+  max_output_tokens: 200
+  max_retries: 5
+
+# ------------------------------------------------------------
+# Models 3–5 — QLoRA fine-tuned open LLMs
+# ------------------------------------------------------------
+qlora:
+  models:
+    llama:
+      run_name: Llama_3.1_8B_QLoRA
+      hf_id: meta-llama/Llama-3.1-8B-Instruct
+    qwen:
+      run_name: Qwen3_8B_QLoRA
+      hf_id: Qwen/Qwen3-8B
+    deepseek:
+      run_name: DeepSeek_R1_Distill_Qwen_7B_QLoRA
+      hf_id: deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+    # On an A100 40/80 GB you can add e.g.:
+    # qwen14b:
+    #   run_name: Qwen3_14B_QLoRA
+    #   hf_id: Qwen/Qwen3-14B
+
+  load_in_4bit: true             # set false only for CPU smoke tests
+  epochs: 2
+  learning_rate: 2.0e-4
+  batch_size: 1
+  grad_accum_steps: 8
+  # Tuned for an 8 GB laptop GPU (RTX 5070 Laptop). On a 16 GB+ GPU you can
+  # raise these to 1536 / 1600. Keep them identical for all LLMs (fair comparison).
+  max_length: 1024               # training sequence length (prompt + answer)
+  max_prompt_tokens: 1024        # inference prompt budget
+  max_new_tokens: 160
+  gradient_checkpointing: true
+  lora:
+    r: 16                        # drop to 8 if you still get out-of-memory
+    alpha: 32
+    dropout: 0.05
+    target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]

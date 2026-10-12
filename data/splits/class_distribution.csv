@@ -1,0 +1,57 @@
+variable,split,label,count
+unit_1_direction,train,nb,105
+unit_1_direction,train,wb,78
+unit_1_direction,train,sb,76
+unit_1_direction,train,eb,69
+unit_1_direction,train,unknown,25
+unit_1_direction,test,nb,49
+unit_1_direction,test,sb,34
+unit_1_direction,test,wb,32
+unit_1_direction,test,eb,31
+unit_1_direction,test,unknown,6
+unit_1_movement,train,th,199
+unit_1_movement,train,lt,125
+unit_1_movement,train,rt,24
+unit_1_movement,train,unknown,5
+unit_1_movement,test,th,80
+unit_1_movement,test,lt,53
+unit_1_movement,test,rt,17
+unit_1_movement,test,unknown,2
+unit_2_direction,train,nb,98
+unit_2_direction,train,sb,89
+unit_2_direction,train,wb,74
+unit_2_direction,train,eb,69
+unit_2_direction,train,unknown,23
+unit_2_direction,test,nb,53
+unit_2_direction,test,sb,36
+unit_2_direction,test,wb,33
+unit_2_direction,test,eb,24
+unit_2_direction,test,unknown,6
+unit_2_movement,train,th,277
+unit_2_movement,train,lt,55
+unit_2_movement,train,rt,17
+unit_2_movement,train,unknown,4
+unit_2_movement,test,th,114
+unit_2_movement,test,lt,22
+unit_2_movement,test,rt,15
+unit_2_movement,test,unknown,1
+unit_at_fault,train,unit 1,327
+unit_at_fault,train,unknown,16
+unit_at_fault,train,unit 2,10
+unit_at_fault,test,unit 1,144
+unit_at_fault,test,unknown,7
+unit_at_fault,test,unit 2,1
+crash_type,train,rear end,158
+crash_type,train,left turn,84
+crash_type,train,side swipe,57
+crash_type,train,right angle,38
+crash_type,train,backing vehicle,7
+crash_type,train,unknown,6
+crash_type,train,head on,3
+crash_type,test,rear end,68
+crash_type,test,left turn,37
+crash_type,test,side swipe,25
+crash_type,test,right angle,16
+crash_type,test,backing vehicle,3
+crash_type,test,unknown,2
+crash_type,test,head on,1
